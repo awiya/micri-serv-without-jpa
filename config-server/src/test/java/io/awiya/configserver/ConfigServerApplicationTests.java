@@ -1,10 +1,10 @@
-package io.awiya.servicedepartements;
+package io.awiya.configserver;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ServiceDepartementsApplicationTests {
+class ConfigServerApplicationTests {
 
 	@Test
 	void contextLoads() {
