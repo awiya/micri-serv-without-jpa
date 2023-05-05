@@ -1,13 +1,13 @@
-package io.awiya.miscroServicesFolder;
+package io.awiya.servicedepartements;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MiscroServicesFolderApplication {
+public class ServiceDepartementsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MiscroServicesFolderApplication.class, args);
+		SpringApplication.run(ServiceDepartementsApplication.class, args);
 	}
 
 }
