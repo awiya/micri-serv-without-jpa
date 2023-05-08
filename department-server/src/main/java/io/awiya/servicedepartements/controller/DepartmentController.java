@@ -19,13 +19,15 @@ public class DepartmentController {
 
 
     private final DepartmentRepository repository;
+    private final EmployeeClient employeeClient;
 
 
     
 
-    public DepartmentController(DepartmentRepository repository) {
+    public DepartmentController(DepartmentRepository repository, EmployeeClient employeeClient) {
         this.repository = repository;
 
+        this.employeeClient = employeeClient;
     }
 
     @PostMapping
@@ -45,6 +47,8 @@ public class DepartmentController {
         LOGGER.info("Department find: id={}", id);
         return repository.findById(id);
     }
+
+
 
     
 
