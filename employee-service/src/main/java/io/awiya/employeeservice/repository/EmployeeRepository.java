@@ -1,7 +1,7 @@
 package io.awiya.employeeservice.repository;
 
 
-import io.awiya.employeeservice.exceptions.EmployeeNotFoundExeption;
+import io.awiya.employeeservice.exceptions.EmployeeNotFoundException;
 import io.awiya.employeeservice.model.Employee;
 import org.springframework.stereotype.Repository;
 
@@ -23,7 +23,7 @@ public class EmployeeRepository {
         return employees.stream()
                 .filter(employee -> employee.id().equals(id))
                 .findFirst()
-                .orElseThrow(()-> new EmployeeNotFoundExeption(String.format("the employee with the id: %s has not been found")));
+                .orElseThrow(()-> new EmployeeNotFoundException(String.format("the employee with the id: %s has not been found")));
     }
 
     public List<Employee> findAll() {
