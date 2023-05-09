@@ -19,13 +19,15 @@ public class DepartmentController {
 
 
     private final DepartmentRepository repository;
+    private final EmployeeClient employeeClient;
 
 
     
 
-    public DepartmentController(DepartmentRepository repository) {
+    public DepartmentController(DepartmentRepository repository, EmployeeClient employeeClient) {
         this.repository = repository;
 
+        this.employeeClient = employeeClient;
     }
 
     @PostMapping
@@ -36,7 +38,7 @@ public class DepartmentController {
 
     @GetMapping
     public List<Department> findAll() {
-        LOGGER.info("Department find");
+        LOGGER.info("Departments fetched");
         return repository.findAll();
     }
 
@@ -44,6 +46,17 @@ public class DepartmentController {
     public Department findById(@PathVariable Long id) {
         LOGGER.info("Department find: id={}", id);
         return repository.findById(id);
+    }
+
+    @GetMapping("/withEmployees")
+    public List<Department> findAllWithEmployees() {
+        LOGGER.info("Department find");
+        List<Department> departments
+                = repository.findAll();
+        departments.forEach(department ->
+                department.setEmployees(
+                        employeeClient.findByDepartment(department.getId())));
+        return  departments;
     }
 
     
