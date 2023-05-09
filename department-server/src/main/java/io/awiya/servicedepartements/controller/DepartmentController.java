@@ -38,7 +38,7 @@ public class DepartmentController {
 
     @GetMapping
     public List<Department> findAll() {
-        LOGGER.info("Department find");
+        LOGGER.info("Departments fetched");
         return repository.findAll();
     }
 
@@ -48,7 +48,16 @@ public class DepartmentController {
         return repository.findById(id);
     }
 
-
+    @GetMapping("/withEmployees")
+    public List<Department> findAllWithEmployees() {
+        LOGGER.info("Department find");
+        List<Department> departments
+                = repository.findAll();
+        departments.forEach(department ->
+                department.setEmployees(
+                        employeeClient.findByDepartment(department.getId())));
+        return  departments;
+    }
 
     
 
